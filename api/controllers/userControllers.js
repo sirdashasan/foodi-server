@@ -41,6 +41,25 @@ const deleteUser = async (req, res) => {
   }
 };
 
+// get admin
+const getAdmin = async (req, res) => {
+  const email = req.params.email;
+  const query = { email: email };
+  try {
+    const user = await User.findOne(query);
+    if (email !== req.decoded.email) {
+      return res.status(403).send({ message: "Forbidden access" });
+    }
+    let admin = false;
+    if (user) {
+      admin = user?.role === "admin";
+    }
+    res.status(200).json({ admin });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 module.exports = {
   getAllUsers,
   createUser,
