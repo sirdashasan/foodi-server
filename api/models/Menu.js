@@ -13,6 +13,10 @@ const menuSchema = new Schema({
   image: String,
   category: String,
   price: Number,
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 // create model
