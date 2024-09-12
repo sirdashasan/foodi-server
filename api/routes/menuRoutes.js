@@ -14,4 +14,7 @@ router.post("/", menuController.postMenuItem);
 // delete a menu item
 router.delete("/:id", menuController.deleteMenuItem);
 
+// get single menu item
+router.get("/:id", menuController.singleMenuItem);
+
 module.exports = router;

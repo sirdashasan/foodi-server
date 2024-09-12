@@ -34,8 +34,20 @@ const deleteMenuItem = async (req, res) => {
   }
 };
 
+// get single menu item
+const singleMenuItem = async (req, res) => {
+  const menuId = req.params.id;
+  try {
+    const menu = await Menu.findById(menuId);
+    res.status(200).json(menu);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 module.exports = {
   getAllMenuItems,
   postMenuItem,
   deleteMenuItem,
+  singleMenuItem,
 };
