@@ -33,9 +33,11 @@ app.post("/jwt", async (req, res) => {
 const menuRoutes = require("./api/routes/menuRoutes");
 const cartRoutes = require("./api/routes/cartRoutes");
 const userRoutes = require("./api/routes/userRoutes");
+const paymentRoutes = require("./api/routes/paymentRoutes");
 app.use("/menu", menuRoutes);
 app.use("/carts", cartRoutes);
 app.use("/users", userRoutes);
+app.use("/payments", paymentRoutes);
 
 // stripe payment routes
 app.post("/create-payment-intent", async (req, res) => {
