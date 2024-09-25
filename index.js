@@ -42,7 +42,7 @@ app.use("/payments", paymentRoutes);
 // stripe payment routes
 app.post("/create-payment-intent", async (req, res) => {
   const { price } = req.body;
-  const amount = price * 100;
+  const amount = Math.round(price * 100);
 
   // Create a PaymentIntent with the order amount and currency
   const paymentIntent = await stripe.paymentIntents.create({
