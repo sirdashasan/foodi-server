@@ -17,7 +17,7 @@ const addToCart = async (req, res) => {
   const { menuItemId, name, recipe, image, price, quantity, email } = req.body;
   try {
     //existing menu item
-    const existingCartItem = await Carts.findOne({ menuItemId });
+    const existingCartItem = await Carts.findOne({ menuItemId, email });
     if (existingCartItem) {
       return res
         .status(400)
