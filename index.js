@@ -8,7 +8,15 @@ require("dotenv").config();
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 // middleware
-app.use(cors());
+//app.use(cors());
+app.use(
+  cors({
+    origin: [
+      "https://foodi-client-app-hazel.vercel.app",
+      "https://foodi-server-production.up.railway.app",
+    ],
+  })
+);
 app.use(express.json());
 
 //mongodb configuration using mongoose
